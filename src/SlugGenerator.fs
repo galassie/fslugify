@@ -6,6 +6,9 @@ module StringUtils =
     let trim (input: string) =
         input.Trim() 
 
+    let toLowerCase (input: string) =
+        input.ToLower()
+
     let collect (mapChar: char -> string) (input: string) =
         input |> String.collect mapChar
 
@@ -21,4 +24,5 @@ module SlugGenerator =
 
         toSlugify.Trim()
         |> StringUtils.trim
+        |> StringUtils.toLowerCase
         |> StringUtils.collect mapChar
