@@ -1,5 +1,14 @@
 ﻿namespace FSharp.Slugify
 
+[<RequireQualifiedAccess>]
+module StringUtils =
+    
+    let trim (input: string) =
+        input.Trim() 
+
+    let collect (mapChar: char -> string) (input: string) =
+        input |> String.collect mapChar
+
 module SlugGenerator =
     
     type SlugGeneratorOptions = string array
@@ -10,5 +19,6 @@ module SlugGenerator =
             | ' ' -> "-"
             | _ -> sprintf "%c" char
 
-        toSlugify
-        |> String.collect mapChar
+        toSlugify.Trim()
+        |> StringUtils.trim
+        |> StringUtils.collect mapChar
