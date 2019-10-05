@@ -1,13 +1,11 @@
-module FSharp.Slugify.Tests
+namespace FSharp.Slugify.Tests
 
 open NUnit.Framework
 open FSharp.Slugify.SlugGenerator
 
-[<SetUp>]
-let Setup () =
-    ()
+type SlugGeneratorTests() =
 
-[<TestCase("test", "test")>]
-let ``Test slugify method`` (input, expectedOutput) =
-    let stringSlugified = slugify [||] input
-    Assert.Equals(stringSlugified, expectedOutput)
+    [<TestCase("test", "test")>]
+    member this.``Test slugify method`` (input, expectedOutput) =
+        let stringSlugified = slugify [||] input
+        Assert.AreEqual(stringSlugified, expectedOutput)
