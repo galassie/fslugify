@@ -1,6 +1,7 @@
-module FSharp.SLugify.Tests
+module FSharp.Slugify.Tests
 
 open NUnit.Framework
+open FSharp.Slugify.SlugGenerator
 
 [<SetUp>]
 let Setup () =
