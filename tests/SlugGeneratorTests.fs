@@ -7,6 +7,7 @@ open FSharp.Slugify.SlugGenerator
 let Setup () =
     ()
 
-[<Test>]
-let Test1 () =
-    Assert.Pass()
+[<TestCase("test", "test")>]
+let ``Test slugify method`` (input, expectedOutput) =
+    let stringSlugified = slugify [||] input
+    Assert.Equals(stringSlugified, expectedOutput)

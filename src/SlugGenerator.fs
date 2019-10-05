@@ -2,5 +2,7 @@
 
 module SlugGenerator =
     
-    let slugify options toSlugify =
+    type SlugGeneratorOptions = string array
+
+    let slugify (options: string array) (toSlugify: string) =
         toSlugify
