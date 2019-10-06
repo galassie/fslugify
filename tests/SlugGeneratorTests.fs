@@ -11,6 +11,7 @@ type SlugGeneratorTests() =
     [<TestCase("To Lower", "to-lower")>]
     [<TestCase("ToSeparate", "to-separate")>]
     [<TestCase("toSeparate", "to-separate")>]
-    member this.``Test slugify method`` (input, expectedOutput) =
+    [<TestCase("EVERY CHAR CAPSLOCK", "every-char-capslock")>]
+    member this.``Test slugify method with default options`` (input, expectedOutput) =
         let stringSlugified = slugify [||] input
         Assert.AreEqual(expectedOutput, stringSlugified)
