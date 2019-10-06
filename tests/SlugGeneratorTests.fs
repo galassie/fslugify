@@ -9,6 +9,8 @@ type SlugGeneratorTests() =
     [<TestCase("url with spaces", "url-with-spaces")>]
     [<TestCase("       url to trim    ", "url-to-trim")>]
     [<TestCase("To Lower", "to-lower")>]
+    [<TestCase("ToSeparate", "to-separate")>]
+    [<TestCase("toSeparate", "to-separate")>]
     member this.``Test slugify method`` (input, expectedOutput) =
         let stringSlugified = slugify [||] input
         Assert.AreEqual(expectedOutput, stringSlugified)
