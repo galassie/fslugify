@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="Charsets.fs" />
     <Compile Include="SlugGenerator.fs" />
   </ItemGroup>
 
