@@ -12,11 +12,13 @@ module SlugGenerator =
             | (x, Some y) ->
                 match x, y with
                 | (' ', _) -> "-"
+                | (s, _) when not (AnycaseCharset.Contains s) -> StringUtils.empty 
                 | (l, u) when LowercaseCharset.Contains l && UppercaseCharset.Contains u -> sprintf "%c-" l
                 | (_,_) -> sprintf "%c" x
             | (x, None) ->
                 match x with
                 | ' ' -> StringUtils.empty
+                | s when not (AnycaseCharset.Contains s) -> StringUtils.empty
                 | _ -> sprintf "%c" x
 
         toSlugify.Trim()
