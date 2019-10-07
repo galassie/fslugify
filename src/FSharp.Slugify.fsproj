@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <Compile Include="Charsets.fs" />
+    <Compile Include="StringUtils.fs" />
     <Compile Include="SlugGenerator.fs" />
   </ItemGroup>
 
