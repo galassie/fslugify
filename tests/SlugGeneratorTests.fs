@@ -12,7 +12,9 @@ type SlugGeneratorTests() =
     [<TestCase("ToSeparate", "to-separate")>]
     [<TestCase("toSeparate", "to-separate")>]
     [<TestCase("EVERY CHAR CAPSLOCK", "every-char-capslock")>]
-    [<TestCase("{with! %nonchars)", "with-nonchars")>]
+    [<TestCase("{with} [symbols)", "with-symbols")>]
+    [<TestCase("{with!  #@? symbols)", "with-symbols")>]
+    [<TestCase("!£$% symbols at start end !£$%  ", "symbols-at-start-end")>]
     member this.``Test slugify method with default options`` (input, expectedOutput) =
         let stringSlugified = slugify [||] input
         Assert.AreEqual(expectedOutput, stringSlugified)
