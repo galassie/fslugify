@@ -16,6 +16,7 @@ type SlugGeneratorTests() =
     [<TestCase("{with!  #@? symbols)", "with-symbols")>]
     [<TestCase("!£$% symbols at start end !£$%  ", "symbols-at-start-end")>]
     [<TestCase("Test with numbers23", "test-with-numbers23")>]
+    [<TestCase("Déjà Vu!", "deja-vu")>]
     member this.``Test slugify method with default options`` (input, expectedOutput) =
         let stringSlugified = slugify [||] input
         Assert.AreEqual(expectedOutput, stringSlugified)
