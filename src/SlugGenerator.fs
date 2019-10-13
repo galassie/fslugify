@@ -5,9 +5,13 @@ open FSharp.Slugify.Charmaps
 
 module SlugGenerator =
     
-    type SlugGeneratorOptions = string array
+    type SlugGeneratorOptions = { Separator: char option }
 
-    let slugify (options: string array) (toSlugify: string) =
+    let DefaultSlugGeneratorOptions = {
+        Separator = Some '_'
+    }
+
+    let slugify (options: SlugGeneratorOptions) (toSlugify: string) =
         let map (replacer: char) (charSeq: char * char option) = 
             match charSeq with
             | (x, Some y) ->
@@ -27,10 +31,14 @@ module SlugGenerator =
             | s when not (AnycaseCharset.Contains s) -> replacer
             | _ -> input 
 
+        let opts = {|
+            Separator = options.Separator |> function | Some x -> x | None -> '_'  
+        |}
+
         toSlugify
         |> StringUtils.toCharArray
-        |> Array.map (replaceChars '-')
+        |> Array.map (replaceChars opts.Separator)
         |> StringUtils.toCharSequence
-        |> StringUtils.mapCharSequence (map '-')
-        |> StringUtils.trim '-'
+        |> StringUtils.mapCharSequence (map opts.Separator)
+        |> StringUtils.trim opts.Separator
         |> StringUtils.toLower
