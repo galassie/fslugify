@@ -8,11 +8,13 @@ module SlugGenerator =
     type SlugGeneratorOptions = {
         Separator: char option
         Lowercase: bool option
+        CustomMap: Map<string, string> option
     }
 
     let DefaultSlugGeneratorOptions = {
         Separator = Some '_'
         Lowercase = Some true
+        CustomMap = Some (Map.ofArray [| |])
     }
 
     let slugify (options: SlugGeneratorOptions) (toSlugify: string) =
@@ -20,7 +22,13 @@ module SlugGenerator =
         let opts = {|
             Separator = options.Separator |> function | Some x -> x | None -> '_'
             Lowercase = options.Lowercase |> function | Some x -> x | None -> true
+            CustomMap = options.CustomMap |> function | Some x -> x | None -> Map.ofArray [| |]
         |}
+
+        let doCustoMap (customMap: Map<string, string>) (input: string) =
+            let mutable result = input
+            for kvp in customMap do result <- StringUtils.replace kvp.Key kvp.Value result
+            result
 
         let replaceChars (replacer: char) (input: char) =
             match input with
@@ -44,6 +52,7 @@ module SlugGenerator =
         let optionalToLower = opts.Lowercase |> function | true -> StringUtils.toLower | false -> id
 
         toSlugify
+        |> doCustoMap opts.CustomMap
         |> StringUtils.toCharArray
         |> Array.map (replaceChars opts.Separator)
         |> StringUtils.toCharSequence
