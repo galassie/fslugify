@@ -21,10 +21,18 @@ type SlugGeneratorTests() =
         let stringSlugified = slugify DefaultSlugGeneratorOptions input
         Assert.AreEqual(expectedOutput, stringSlugified)
 
-    [<TestCase("test case", '@', "test@case")>]
+    [<TestCase("Test Case", '@', "test@case")>]
     [<TestCase("    MORE   TEST    CASE  ", '#', "more#test#case")>]
-    [<TestCase("{with} [symbols)", '.', "with.symbols")>]
+    [<TestCase("{With} [Symbols)", '.', "with.symbols")>]
     [<TestCase("Déjà Vu!!!", '§', "deja§vu")>]
     member this.``Test slugify method with custom separator`` (input, customSeparator, expectedOutput) =
-        let stringSlugified = slugify { Separator = Some customSeparator } input
+        let stringSlugified = slugify { Separator = Some customSeparator; Lowercase = None } input
+        Assert.AreEqual(expectedOutput, stringSlugified)
+
+    [<TestCase("Test Case", "Test@Case")>]
+    [<TestCase("    MORE   TEST    CASE  ", "MORE@TEST@CASE")>]
+    [<TestCase("{With} [Symbols)", "With@Symbols")>]
+    [<TestCase("DÉJÀ VU!!!", "DEJA@VU")>]
+    member this.``Test slugify method with lowercase false`` (input, expectedOutput) =
+        let stringSlugified = slugify { Separator = Some '@'; Lowercase = Some false } input
         Assert.AreEqual(expectedOutput, stringSlugified)

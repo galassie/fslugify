@@ -5,13 +5,29 @@ open FSharp.Slugify.Charmaps
 
 module SlugGenerator =
     
-    type SlugGeneratorOptions = { Separator: char option }
+    type SlugGeneratorOptions = {
+        Separator: char option
+        Lowercase: bool option
+    }
 
     let DefaultSlugGeneratorOptions = {
         Separator = Some '_'
+        Lowercase = Some true
     }
 
     let slugify (options: SlugGeneratorOptions) (toSlugify: string) =
+        
+        let opts = {|
+            Separator = options.Separator |> function | Some x -> x | None -> '_'
+            Lowercase = options.Lowercase |> function | Some x -> x | None -> true
+        |}
+
+        let replaceChars (replacer: char) (input: char) =
+            match input with
+            | m when InternalCharmap.ContainsKey m -> InternalCharmap.Item m
+            | s when not (AnycaseCharset.Contains s) -> replacer
+            | _ -> input
+
         let map (replacer: char) (charSeq: char * char option) = 
             match charSeq with
             | (x, Some y) ->
@@ -25,15 +41,7 @@ module SlugGenerator =
             | (x, None)
                 -> sprintf "%c" x
 
-        let replaceChars (replacer: char) (input: char) =
-            match input with
-            | m when InternalCharmap.ContainsKey m -> InternalCharmap.Item m
-            | s when not (AnycaseCharset.Contains s) -> replacer
-            | _ -> input 
-
-        let opts = {|
-            Separator = options.Separator |> function | Some x -> x | None -> '_'  
-        |}
+        let optionalToLower = opts.Lowercase |> function | true -> StringUtils.toLower | false -> id
 
         toSlugify
         |> StringUtils.toCharArray
@@ -41,4 +49,4 @@ module SlugGenerator =
         |> StringUtils.toCharSequence
         |> StringUtils.mapCharSequence (map opts.Separator)
         |> StringUtils.trim opts.Separator
-        |> StringUtils.toLower
+        |> optionalToLower
