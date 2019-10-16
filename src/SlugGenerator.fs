@@ -25,10 +25,10 @@ module SlugGenerator =
             CustomMap = options.CustomMap |> function | Some x -> x | None -> Map.ofArray [| |]
         |}
 
-        let doCustoMap (customMap: Map<string, string>) (input: string) =
-            let mutable result = input
-            for kvp in customMap do result <- StringUtils.replace kvp.Key kvp.Value result
-            result
+        let rec doCustoMap (customMap: List<(string * string)>) (input: string) =
+            match customMap with
+            | (replaceWhat, replaceWith)::tail -> doCustoMap tail (StringUtils.replace replaceWhat replaceWith input)
+            | _ -> input
 
         let replaceChars (replacer: char) (input: char) =
             match input with
@@ -52,7 +52,7 @@ module SlugGenerator =
         let optionalToLower = opts.Lowercase |> function | true -> StringUtils.toLower | false -> id
 
         toSlugify
-        |> doCustoMap opts.CustomMap
+        |> doCustoMap (Map.toList opts.CustomMap)
         |> StringUtils.toCharArray
         |> Array.map (replaceChars opts.Separator)
         |> StringUtils.toCharSequence
