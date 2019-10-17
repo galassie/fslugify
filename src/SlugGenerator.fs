@@ -6,29 +6,23 @@ open FSharp.Slugify.Charmaps
 module SlugGenerator =
     
     type SlugGeneratorOptions = {
-        Separator: char option
-        Lowercase: bool option
-        CustomMap: Map<string, string> option
+        Separator: char
+        Lowercase: bool
+        CustomMap: (string * string) list
     }
 
     let DefaultSlugGeneratorOptions = {
-        Separator = Some '_'
-        Lowercase = Some true
-        CustomMap = Some (Map.ofArray [| |])
+        Separator = '_'
+        Lowercase = true
+        CustomMap = [ ]
     }
 
-    let slugify (options: SlugGeneratorOptions) (toSlugify: string) =
-        
-        let opts = {|
-            Separator = options.Separator |> function | Some x -> x | None -> '_'
-            Lowercase = options.Lowercase |> function | Some x -> x | None -> true
-            CustomMap = options.CustomMap |> function | Some x -> x | None -> Map.ofArray [| |]
-        |}
+    let slugify (opts: SlugGeneratorOptions) (toSlugify: string) =
 
-        let rec doCustoMap (customMap: List<(string * string)>) (input: string) =
+        let rec doCustoMap (customMap: (string * string) list) (input: string) =
             match customMap with
             | (replaceWhat, replaceWith)::tail -> doCustoMap tail (StringUtils.replace replaceWhat replaceWith input)
-            | _ -> input
+            | [] -> input
 
         let replaceChars (replacer: char) (input: char) =
             match input with
@@ -52,7 +46,7 @@ module SlugGenerator =
         let optionalToLower = opts.Lowercase |> function | true -> StringUtils.toLower | false -> id
 
         toSlugify
-        |> doCustoMap (Map.toList opts.CustomMap)
+        |> doCustoMap opts.CustomMap
         |> StringUtils.toCharArray
         |> Array.map (replaceChars opts.Separator)
         |> StringUtils.toCharSequence

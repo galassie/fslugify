@@ -26,7 +26,7 @@ type SlugGeneratorTests() =
     [<TestCase("{With} [Symbols)", '.', "with.symbols")>]
     [<TestCase("Déjà Vu!!!", '§', "deja§vu")>]
     member this.``Test slugify with custom separator`` (input, customSeparator, expectedOutput) =
-        let options = { DefaultSlugGeneratorOptions with Separator = Some customSeparator }
+        let options = { DefaultSlugGeneratorOptions with Separator = customSeparator }
         let stringSlugified = slugify options input
         Assert.AreEqual(expectedOutput, stringSlugified)
 
@@ -35,7 +35,7 @@ type SlugGeneratorTests() =
     [<TestCase("{With} [Symbols)", "With@Symbols")>]
     [<TestCase("DÉJÀ VU!!!", "DEJA@VU")>]
     member this.``Test slugify with lowercase false`` (input, expectedOutput) =
-        let options = { DefaultSlugGeneratorOptions with Separator = Some '@'; Lowercase = Some false }
+        let options = { DefaultSlugGeneratorOptions with Separator = '@'; Lowercase = false }
         let stringSlugified = slugify options input
         Assert.AreEqual(expectedOutput, stringSlugified)  
 
@@ -44,7 +44,7 @@ type SlugGeneratorTests() =
     [<TestCase("{With}⏳[Symbols)", "with_hourglass_symbols")>]
     [<TestCase("DÉJÀ 🤡!!!", "deja_clown")>]
     member this.``Test slugify method with custom map`` (input, expectedOutput) =
-        let customMap = Map.ofArray [| ("|", " or "); ("&", " and "); ("⏳", " hourglass "); ("🤡", " clown") |]
-        let options = { DefaultSlugGeneratorOptions with CustomMap = Some customMap }
+        let customMap = [ ("|", " or "); ("&", " and "); ("⏳", " hourglass "); ("🤡", " clown") ]
+        let options = { DefaultSlugGeneratorOptions with CustomMap = customMap }
         let stringSlugified = slugify options input
         Assert.AreEqual(expectedOutput, stringSlugified)
