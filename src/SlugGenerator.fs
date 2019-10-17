@@ -19,9 +19,9 @@ module SlugGenerator =
 
     let slugify (opts: SlugGeneratorOptions) (toSlugify: string) =
 
-        let rec doCustoMap (customMap: (string * string) list) (input: string) =
+        let rec doCustomMap (customMap: (string * string) list) (input: string) =
             match customMap with
-            | (replaceWhat, replaceWith)::tail -> doCustoMap tail (StringUtils.replace replaceWhat replaceWith input)
+            | (replaceWhat, replaceWith)::tail -> doCustomMap tail (StringUtils.replace replaceWhat replaceWith input)
             | [] -> input
 
         let replaceChars (replacer: char) (input: char) =
@@ -46,7 +46,7 @@ module SlugGenerator =
         let optionalToLower = opts.Lowercase |> function | true -> StringUtils.toLower | false -> id
 
         toSlugify
-        |> doCustoMap opts.CustomMap
+        |> doCustomMap opts.CustomMap
         |> StringUtils.toCharArray
         |> Array.map (replaceChars opts.Separator)
         |> StringUtils.toCharSequence
