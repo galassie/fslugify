@@ -1,7 +1,7 @@
 ﻿namespace FSharp.Slugify
 
-open FSharp.Slugify.Charsets
-open FSharp.Slugify.Charmaps
+open FSharp.Slugify.CharSets
+open FSharp.Slugify.CharMaps
 
 module SlugGenerator =
     
@@ -26,8 +26,8 @@ module SlugGenerator =
 
         let replaceChars (replacer: char) (input: char) =
             match input with
-            | m when InternalCharmap.ContainsKey m -> InternalCharmap.Item m
-            | s when not (AnycaseCharset.Contains s) -> replacer
+            | m when InternalCharMap.ContainsKey m -> InternalCharMap.Item m
+            | s when not (AnycaseCharSet.Contains s) -> replacer
             | _ -> input
 
         let map (replacer: char) (charSeq: char * char option) = 
@@ -36,7 +36,7 @@ module SlugGenerator =
                 match x, y with
                 | (rep1, rep2) when rep1 = replacer && rep1 = rep2
                     -> StringUtils.empty
-                | (l, u) when LowercaseCharset.Contains l && UppercaseCharset.Contains u
+                | (l, u) when LowercaseCharSet.Contains l && UppercaseCharSet.Contains u
                     -> sprintf "%c%c" l replacer
                 | (_,_)
                     -> sprintf "%c" x

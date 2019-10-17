@@ -3,8 +3,8 @@
     <TargetFramework>netstandard2.1</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Charsets.fs" />
-    <Compile Include="Charmaps.fs" />
+    <Compile Include="CharSets.fs" />
+    <Compile Include="CharMaps.fs" />
     <Compile Include="StringUtils.fs" />
     <Compile Include="SlugGenerator.fs" />
   </ItemGroup>
