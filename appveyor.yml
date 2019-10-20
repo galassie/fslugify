@@ -8,10 +8,10 @@ nuget:
 build_script:
   - dotnet build  -c Release
   - dotnet test   -c Release
-  - dotnet pack   -c Release
+  - dotnet pack   -c Release -o .\deploy
 
 test: off
 
 artifacts:
-  - path: 'bin\*.nupkg'
+  - path: 'deploy\*.nupkg'
     type: NuGetPackage
