@@ -6,7 +6,9 @@ nuget:
   disable_publish_on_pr: true
 
 build_script:
-  - cmd: .\build.cmd --target NuGet
+  - dotnet build  -c Release
+  - dotnet test   -c Release
+  - dotnet pack   -c Release
 
 test: off
 
