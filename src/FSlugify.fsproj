@@ -16,6 +16,7 @@
 		<PackageTags>moq;tdd;mocking;mocks;unittesting;agile;unittest</PackageTags>
 		<RepositoryUrl>https://github.com/galassie/fslugify</RepositoryUrl>
 		<IncludeSymbols>True</IncludeSymbols>
+    <RepositoryType>git</RepositoryType>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
 
