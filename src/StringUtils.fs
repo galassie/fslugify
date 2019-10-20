@@ -21,17 +21,3 @@ module StringUtils =
 
     let toLower (input: string) =
         input.ToLowerInvariant()
-    
-    let toCharSequence (charArray: char array) = 
-        let maxIndex = charArray.Length - 1
-        [|
-            for i in 0..maxIndex do 
-                if i <> maxIndex then
-                    yield (charArray.[i], Some charArray.[i+1])
-                else
-                    yield (charArray.[i], None)
-        |]
-
-    let mapCharSequence (map: (char * char option) -> string) (input: (char * char option) array) =
-        [| for el in input do yield map el |]
-        |> String.concat empty
