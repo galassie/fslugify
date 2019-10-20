@@ -13,7 +13,7 @@
 		<PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
 		<NoPackageAnalysis>True</NoPackageAnalysis>
 		<PackageOutputPath>$(OutputDirectory)</PackageOutputPath>
-		<PackageTags>moq;tdd;mocking;mocks;unittesting;agile;unittest</PackageTags>
+		<PackageTags>slug;slugify;F#;fsharp;</PackageTags>
 		<RepositoryUrl>https://github.com/galassie/fslugify</RepositoryUrl>
 		<IncludeSymbols>True</IncludeSymbols>
     <RepositoryType>git</RepositoryType>
