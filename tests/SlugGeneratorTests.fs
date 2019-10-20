@@ -1,7 +1,7 @@
-namespace FSharp.Slugify.Tests
+namespace FSlugify.Tests
 
 open NUnit.Framework
-open FSharp.Slugify.SlugGenerator
+open FSlugify.SlugGenerator
 
 type SlugGeneratorTests() =
 

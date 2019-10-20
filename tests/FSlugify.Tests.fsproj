@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\FSharp.Slugify.fsproj" />
+    <ProjectReference Include="..\src\FSlugify.fsproj" />
   </ItemGroup>
 
 </Project>

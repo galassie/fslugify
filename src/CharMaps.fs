@@ -1,4 +1,4 @@
-namespace FSharp.Slugify
+namespace FSlugify
 
 module CharMaps =
 

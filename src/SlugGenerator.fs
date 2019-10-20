@@ -1,7 +1,7 @@
-﻿namespace FSharp.Slugify
+﻿namespace FSlugify
 
-open FSharp.Slugify.CharSets
-open FSharp.Slugify.CharMaps
+open FSlugify.CharSets
+open FSlugify.CharMaps
 
 module SlugGenerator =
     
