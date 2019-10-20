@@ -48,3 +48,13 @@ type SlugGeneratorTests() =
         let options = { DefaultSlugGeneratorOptions with CustomMap = customMap }
         let stringSlugified = slugify options input
         Assert.AreEqual(expectedOutput, stringSlugified)
+
+    [<TestCase("", "")>]
+    [<TestCase("                    ", "")>]
+    [<TestCase("B", "b")>]
+    [<TestCase("a", "a")>]
+    [<TestCase("Ç", "c")>]
+    [<TestCase(null, "")>]
+    member this.``Test slugify with edge cases`` (input, expectedOutput) =
+        let stringSlugified = slugify DefaultSlugGeneratorOptions input
+        Assert.AreEqual(expectedOutput, stringSlugified)

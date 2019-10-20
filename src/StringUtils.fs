@@ -7,6 +7,9 @@ module StringUtils =
     
     let empty = ""
 
+    let isNullOrEmpty (input: string) =
+        isNull input || input = empty
+
     let trim (char: char) (input: string) =
         input.Trim(char) 
 

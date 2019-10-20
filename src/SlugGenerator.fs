@@ -31,9 +31,9 @@ module SlugGenerator =
         | EndOfLine -> eol
 
     let rec private doCustomMap (customMap: (string * string) list) (input: string) =
-            match customMap with
-            | (replaceWhat, replaceWith)::tail -> doCustomMap tail (StringUtils.replace replaceWhat replaceWith input)
-            | [] -> input
+        match customMap with
+        | (replaceWhat, replaceWith)::tail -> doCustomMap tail (StringUtils.replace replaceWhat replaceWith input)
+        | [] -> input
 
     let rec private mapCharToCharType (separator: char) (input: char) =
         match input with
@@ -61,11 +61,13 @@ module SlugGenerator =
         |]
 
     let slugify (opts: SlugGeneratorOptions) (toSlugify: string) =
-        toSlugify
-        |> doCustomMap opts.CustomMap
-        |> StringUtils.toCharArray
-        |> mapCharArrayToCharTypeArray (mapCharToCharType opts.Separator)
-        |> mapCharTypeArrayToStringArray opts.Separator
-        |> String.concat StringUtils.empty
-        |> StringUtils.trim opts.Separator
-        |> (if opts.Lowercase then StringUtils.toLower else id)
+        if StringUtils.isNullOrEmpty toSlugify then StringUtils.empty
+        else
+            toSlugify
+            |> doCustomMap opts.CustomMap
+            |> StringUtils.toCharArray
+            |> mapCharArrayToCharTypeArray (mapCharToCharType opts.Separator)
+            |> mapCharTypeArrayToStringArray opts.Separator
+            |> String.concat StringUtils.empty
+            |> StringUtils.trim opts.Separator
+            |> (if opts.Lowercase then StringUtils.toLower else id)
