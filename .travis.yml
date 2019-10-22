@@ -2,7 +2,7 @@ language: csharp
 solution: fslugify.sln
 
 mono: none
-dotnet: 3.0.0
+dotnet: 3.0.100
 script:
  - dotnet build -c Release
  - dotnet test  -c Release
