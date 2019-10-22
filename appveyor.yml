@@ -10,8 +10,6 @@ build_script:
   - dotnet test   -c Release
   - dotnet pack   -c Release -o .\deploy
 
-test: off
-
 artifacts:
   - path: 'deploy\*.nupkg'
     type: NuGetPackage

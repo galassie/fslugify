@@ -12,7 +12,6 @@
 		<PackageLicenseUrl>https://raw.githubusercontent.com/galassie/fslugify/master/License.md</PackageLicenseUrl>
 		<PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
 		<NoPackageAnalysis>True</NoPackageAnalysis>
-		<PackageOutputPath>$(OutputDirectory)</PackageOutputPath>
 		<PackageTags>slug;slugify;F#;fsharp;</PackageTags>
 		<RepositoryUrl>https://github.com/galassie/fslugify</RepositoryUrl>
 		<IncludeSymbols>True</IncludeSymbols>
