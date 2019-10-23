@@ -58,3 +58,8 @@ type SlugGeneratorTests() =
     member this.``Test slugify with edge cases`` (input, expectedOutput) =
         let stringSlugified = slugify DefaultSlugGeneratorOptions input
         Assert.AreEqual(expectedOutput, stringSlugified)
+
+    [<TestCase("ښ ۍ", "x_ai")>]
+    member this.``Test slugify with Pashto`` (input, expectedOutput) =
+        let stringSlugified = slugify DefaultSlugGeneratorOptions input
+        Assert.AreEqual(expectedOutput, stringSlugified)
