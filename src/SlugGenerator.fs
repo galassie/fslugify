@@ -17,13 +17,13 @@ module SlugGenerator =
         CustomMap = [ ]
     }
 
-    type CharType =
+    type private CharType =
         | LowercaseChar of char
         | UppercaseChar of char
         | Separator of char
         | EndOfLine
 
-    let charTypeToChar (eol: char) (input: CharType) = 
+    let private charTypeToChar (eol: char) (input: CharType) = 
         match input with
         | LowercaseChar l -> l
         | UppercaseChar u -> u
