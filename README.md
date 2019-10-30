@@ -74,6 +74,6 @@ Slug generated from "Test | 🤡" with custom map: "test_or_clown"
 
 ## License
 
-This project is licensed unnder [The MIT License (MIT)](https://raw.githubusercontent.com/galassie/fslugify/master/LICENSE.md).
+This project is licensed under [The MIT License (MIT)](https://raw.githubusercontent.com/galassie/fslugify/master/LICENSE.md).
 
 Author: [Enrico Galassi](https://twitter.com/enricogalassi88)
