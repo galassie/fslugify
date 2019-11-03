@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "FSlugify", "src\FSlugify.fsproj", "{A9535C5B-5715-4C92-B0FB-D735D6748A3D}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "FSlugify", "src\FSlugify\FSlugify.fsproj", "{A9535C5B-5715-4C92-B0FB-D735D6748A3D}"
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "FSlugify.Tests", "tests\FSlugify.Tests.fsproj", "{335783FE-9045-43B1-A81A-1384524E2B6A}"
 EndProject

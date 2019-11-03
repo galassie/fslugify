@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\FSlugify.fsproj" />
+    <ProjectReference Include="..\..\src\FSlugify\FSlugify.fsproj" />
   </ItemGroup>
 
 </Project>
