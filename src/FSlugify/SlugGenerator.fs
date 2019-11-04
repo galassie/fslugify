@@ -21,14 +21,14 @@ module SlugGenerator =
         | LowercaseChar of char
         | UppercaseChar of char
         | Separator of char
-        | EndOfLine
+        | Padding
 
-    let private charTypeToChar (eol: char) (input: CharType) = 
+    let private charTypeToChar (padding: char) (input: CharType) = 
         match input with
         | LowercaseChar l -> l
         | UppercaseChar u -> u
         | Separator s -> s
-        | EndOfLine -> eol
+        | Padding -> padding
 
     let rec private doCustomMap (customMap: (string * string) list) (input: string) =
         match customMap with
@@ -51,7 +51,7 @@ module SlugGenerator =
                     let charTypeArray = Array.map map (StringUtils.toCharArray mappedSpecialChar)
                     for charType in charTypeArray do yield charType
                 | _ -> yield map charInput
-            if input.Length % 2 <> 0 then yield EndOfLine
+            if input.Length % 2 <> 0 then yield Padding
         |]
 
     let private mapCharTypeArrayToStringArray (separator: char) (input: CharType array) =
