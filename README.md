@@ -72,6 +72,10 @@ Slug generated from "Test | 🤡" with custom map: "test_or_clown"
 
 ```
 
+## FSlugify.Adapter
+
+Although the library is usable as it is in a C# project (as it shown in the C# sample), for a better usability (both in syntax and usability) it's preferred to use the library [FSlugify.Adapter](https://github.com/galassie/fslugify-adapter). 
+
 ## License
 
 This project is licensed under [The MIT License (MIT)](https://raw.githubusercontent.com/galassie/fslugify/master/LICENSE.md).
