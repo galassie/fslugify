@@ -7,13 +7,14 @@
   <PropertyGroup>
     <PackageId>FSlugify</PackageId>
 		<Title>FSlugify: a minimalistic slug generator library</Title>
-    <Version>1.0.0-beta002</Version>
+    <Version>1.0.0-beta003</Version>
     <Description>FSlugify is a slug generator library written entirely in F#.</Description>
 		<Authors>Enrico Galassi</Authors>
 		<PackageLicenseUrl>https://raw.githubusercontent.com/galassie/fslugify/master/LICENSE.md</PackageLicenseUrl>
 		<PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
 		<NoPackageAnalysis>True</NoPackageAnalysis>
 		<PackageTags>slug;slugify;F#;fsharp;</PackageTags>
+    <PackageIconUrl>https://raw.githubusercontent.com/galassie/fslugify/master/images/serilog-nuget.png</PackageIconUrl>
 		<RepositoryUrl>https://github.com/galassie/fslugify</RepositoryUrl>
 		<IncludeSymbols>True</IncludeSymbols>
     <RepositoryType>git</RepositoryType>
