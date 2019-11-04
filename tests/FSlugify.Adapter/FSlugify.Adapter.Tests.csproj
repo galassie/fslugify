@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
+
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
@@ -12,11 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="SlugGeneratorTests.fs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\src\FSlugify\FSlugify.fsproj" />
+    <ProjectReference Include="..\..\src\FSlugify.Adapter\FSlugify.Adapter.csproj" />
   </ItemGroup>
 
 </Project>
