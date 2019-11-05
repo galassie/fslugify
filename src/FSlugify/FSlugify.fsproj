@@ -14,7 +14,7 @@
 		<PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
 		<NoPackageAnalysis>True</NoPackageAnalysis>
 		<PackageTags>slug;slugify;F#;fsharp;</PackageTags>
-    <PackageIconUrl>https://raw.githubusercontent.com/galassie/fslugify/master/images/serilog-nuget.png</PackageIconUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/galassie/fslugify/master/images/fslugify-200x200.png</PackageIconUrl>
 		<RepositoryUrl>https://github.com/galassie/fslugify</RepositoryUrl>
 		<IncludeSymbols>True</IncludeSymbols>
     <RepositoryType>git</RepositoryType>
