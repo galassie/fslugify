@@ -52,7 +52,8 @@ let main argv =
     slugify { DefaultSlugGeneratorOptions with Lowercase = false } "Déjà Vu!"
     |> printfn "Slug generated from \"Déjà Vu!\" without lowercase: \"%s\"\n"
     
-    slugify { DefaultSlugGeneratorOptions with CustomMap = [("|", " or "); ("🤡", " clown ")] } "Test | 🤡"
+    let customMap = [("|", " or "); ("🤡", " clown ")]
+    slugify { DefaultSlugGeneratorOptions with CustomMap = customMap } "Test | 🤡"
     |> printfn "Slug generated from \"Test | 🤡\" with custom map: \"%s\"\n"
     0
 
