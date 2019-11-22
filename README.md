@@ -4,7 +4,7 @@
 
 Simple and minimalistic slug generator library written entirely in F#.
 
-It has no extra dependencies, low ceremony and simple to use.
+It's easy to use and has no extra dependencies.
 
 ## Add package
 
@@ -34,7 +34,7 @@ dotnet test
 
 You can see the some examples in the folder "samples" (both in C# and F#).
 
-Here how it look a simple F# program that uses this library:
+Here how it looks a simple F# program that uses this library:
 
 ``` fsharp
 open FSlugify.SlugGenerator
