@@ -32,7 +32,7 @@ module SlugGenerator =
 
     let rec private doCustomMap (customMap: (string * string) list) (input: string) =
         match customMap with
-        | (replaceWhat, replaceWith)::tail -> doCustomMap tail (StringUtils.replace replaceWhat replaceWith input)
+        | (replaceWhat, replaceWith)::tail -> doCustomMap tail <| StringUtils.replace replaceWhat replaceWith input
         | [] -> input
  
     let private mapCharToCharType (separator: char) (input: char) =
@@ -42,15 +42,15 @@ module SlugGenerator =
         | u when UppercaseCharSet.Contains u -> UppercaseChar u
         | _ -> Separator separator
 
-    let rec private mapCharArrayToCharTypeArray (map: char -> CharType) (input: char array) =
+    let rec private mapCharArrayToCharTypeArray (charToCharType: char -> CharType) (input: char array) =
         [|
             for charInput in input do
                 match charInput with
                 | specialChar when InternalCharMap.ContainsKey specialChar ->
                     let mappedSpecialChar = InternalCharMap.Item specialChar
-                    let charTypeArray = Array.map map (StringUtils.toCharArray mappedSpecialChar)
+                    let charTypeArray = Array.map charToCharType <| StringUtils.toCharArray mappedSpecialChar
                     for charType in charTypeArray do yield charType
-                | _ -> yield map charInput
+                | _ -> yield charToCharType charInput
             if input.Length % 2 <> 0 then yield Padding
         |]
 
@@ -61,8 +61,8 @@ module SlugGenerator =
                 match input.[i], input.[i+1] with
                 | Separator _, Separator _ -> yield StringUtils.empty
                 | LowercaseChar l, UppercaseChar _ -> yield sprintf "%c%c" l separator
-                | charType, _ -> yield sprintf "%c" (charTypeToChar separator charType)
-            yield sprintf "%c" (charTypeToChar separator input.[maxEvenIndex+1])
+                | charType, _ -> yield sprintf "%c" <| charTypeToChar separator charType
+            yield sprintf "%c" <| charTypeToChar separator input.[maxEvenIndex+1]
         |]
 
     let slugify (opts: SlugGeneratorOptions) (toSlugify: string) =
