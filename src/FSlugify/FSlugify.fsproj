@@ -26,5 +26,6 @@
     <Compile Include="CharMaps.fs" />
     <Compile Include="StringUtils.fs" />
     <Compile Include="SlugGenerator.fs" />
+    <Compile Include="Builder.fs" />
   </ItemGroup>
 </Project>

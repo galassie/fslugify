@@ -2,6 +2,7 @@ namespace FSlugify.Tests
 
 open NUnit.Framework
 open FSlugify.SlugGenerator
+open FSlugify.Builder
 
 type SlugGeneratorTests() =
 
@@ -37,7 +38,7 @@ type SlugGeneratorTests() =
     member this.``Test slugify with lowercase false`` (input, expectedOutput) =
         let options = { DefaultSlugGeneratorOptions with Separator = '@'; Lowercase = false }
         let stringSlugified = slugify options input
-        Assert.AreEqual(expectedOutput, stringSlugified)  
+        Assert.AreEqual(expectedOutput, stringSlugified)
 
     [<TestCase("Test | Case", "test_or_case")>]
     [<TestCase("  &  MORE   TEST  &  CASE  ", "and_more_test_and_case")>]
@@ -73,4 +74,20 @@ type SlugGeneratorTests() =
     [<TestCase("\u00e9", "e")>]
     member this.``Test normalized strings`` (input, expectedOutput) =
         let stringSlugified = slugify DefaultSlugGeneratorOptions input
+        Assert.AreEqual(expectedOutput, stringSlugified)
+
+    [<TestCase("Test | Case", "test@or@case")>]
+    [<TestCase("  &  MORE   TEST  &  CASE  ", "and@more@test@and@case")>]
+    [<TestCase("{With}⏳[Symbols)", "with@hourglass@symbols")>]
+    [<TestCase("DÉJÀ 🤡!!!", "deja@clown")>]
+    member this.``Test computation expression builder`` (input, expectedOutput) =
+        let customSlugify = slug {
+            separator '@'
+            lowercase true
+            custom_map ("|", " or ")
+            custom_map ("&", " and ")
+            custom_map ("⏳", " hourglass ")
+            custom_map ("🤡", " clown")
+        }
+        let stringSlugified = customSlugify input
         Assert.AreEqual(expectedOutput, stringSlugified)
