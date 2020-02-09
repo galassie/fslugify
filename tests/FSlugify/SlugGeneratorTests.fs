@@ -76,14 +76,14 @@ type SlugGeneratorTests() =
         let stringSlugified = slugify DefaultSlugGeneratorOptions input
         Assert.AreEqual(expectedOutput, stringSlugified)
 
-    [<TestCase("Test | Case", "test@or@case")>]
-    [<TestCase("  &  MORE   TEST  &  CASE  ", "and@more@test@and@case")>]
-    [<TestCase("{With}⏳[Symbols)", "with@hourglass@symbols")>]
-    [<TestCase("DÉJÀ 🤡!!!", "deja@clown")>]
+    [<TestCase("Test | Case", "Test@or@Case")>]
+    [<TestCase("  &  MORE   TEST  &  CASE  ", "and@MORE@TEST@and@CASE")>]
+    [<TestCase("{With}⏳[Symbols)", "With@hourglass@Symbols")>]
+    [<TestCase("DÉJÀ 🤡!!!", "DEJA@clown")>]
     member this.``Test computation expression builder`` (input, expectedOutput) =
         let customSlugify = slug {
             separator '@'
-            lowercase true
+            lowercase false
             custom_map ("|", " or ")
             custom_map ("&", " and ")
             custom_map ("⏳", " hourglass ")
