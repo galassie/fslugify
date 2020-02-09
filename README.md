@@ -73,6 +73,52 @@ Slug generated from "Test | 🤡" with custom map: "test_or_clown"
 
 ```
 
+## Slug Custom Computation Expression
+
+It is possible to use the custom Computation Expression in order to define your custom slugify function.
+
+Here a simple example:
+
+``` fsharp
+open FSlugify.Builder
+
+[<EntryPoint>]
+let main argv =
+    printfn "This example shows how to use the custom Slug Computation Expression!\n"
+
+    let customSlugify = slug {
+            separator '@'
+            lowercase false
+            custom_map ("|", " or ")
+            custom_map ("&", " and ")
+            custom_map ("⏳", " hourglass ")
+            custom_map ("🤡", " clown")
+        }
+
+    customSlugify "Test | Case"
+    |> printfn "Slug generated from \"Test | Case\": \"%s\"\n"
+
+    customSlugify " Test  &  ⏳ "
+    |> printfn "Slug generated from \"  Test  &  ⏳  \": \"%s\"\n"
+
+    customSlugify "HI 🤡!!!"
+    |> printfn "Slug generated from \"HI 🤡!!!\": \"%s\"\n"
+    0
+
+```
+This program will output the following text:
+
+``` shell
+This example shows how to use the custom Slug Computation Expression!
+
+Slug generated from "Test | Case": "Test@or@Case"
+
+Slug generated from "  Test  &  ⏳  ": "Test@and@hourglass"
+
+Slug generated from "HI 🤡!!!": "HI@clown"
+
+```
+
 ## FSlugify.Adapter
 
 Although the library is usable as it is in a C# project (as it shown in the C# sample), for a better usability (both in syntax and usability) it's preferred to use the library [FSlugify.Adapter](https://github.com/galassie/fslugify-adapter). 

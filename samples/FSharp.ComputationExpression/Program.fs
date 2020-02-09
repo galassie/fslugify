@@ -1,5 +1,4 @@
-﻿open FSlugify.SlugGenerator
-open FSlugify.Builder
+﻿open FSlugify.Builder
 
 [<EntryPoint>]
 let main argv =
@@ -15,11 +14,11 @@ let main argv =
         }
 
     customSlugify "Test | Case"
-    |>printfn "Slug generated from \"Test | Case\": \"%s\"\n"
+    |> printfn "Slug generated from \"Test | Case\": \"%s\"\n"
 
     customSlugify " Test  &  ⏳ "
-    |>printfn "Slug generated from \"  Test  &  ⏳  \": \"%s\"\n"
+    |> printfn "Slug generated from \"  Test  &  ⏳  \": \"%s\"\n"
 
     customSlugify "HI 🤡!!!"
-    |>printfn "Slug generated from \"HI 🤡!!!\": \"%s\"\n"
+    |> printfn "Slug generated from \"HI 🤡!!!\": \"%s\"\n"
     0
