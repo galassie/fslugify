@@ -30,6 +30,23 @@ If you want to run the tests, execute the following command:
 dotnet test
 ```
 
+## Build in Docker
+
+Required:
+- Install [Docker](https://hub.docker.com/search/?type=edition&offering=community) for your system
+
+Build a Docker image called `fslugify`. This will work without any local .NET Core installation.
+
+```shell
+docker build -t fslugify .
+```
+
+Use the following to instantiate a Docker container from the `fslugify` image and run the tests inside:
+
+```shell
+docker run --rm fslugify dotnet test
+```
+
 ## Usage
 
 You can see the some examples in the folder "samples" (both in C# and F#).
