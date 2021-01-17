@@ -33,3 +33,4 @@ msbuild.wrn
 
 # Ionide
 .ionide/
+.fake
