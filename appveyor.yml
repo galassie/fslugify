@@ -8,8 +8,8 @@ nuget:
 build_script:
   - dotnet build  -c Release
   - dotnet test   -c Release --no-build
-  - dotnet pack   -c Release --no-build -o .\deploy
+  - dotnet pack   -c Release --no-build -o ./deploy ./src/FSlugify/FSlugify.fsproj
 
 artifacts:
-  - path: 'deploy\*.nupkg'
+  - path: 'deploy/*.nupkg'
     type: NuGetPackage
