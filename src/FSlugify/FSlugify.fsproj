@@ -8,19 +8,19 @@
 
   <PropertyGroup>
     <PackageId>FSlugify</PackageId>
-		<Title>FSlugify: a minimalistic slug generator library</Title>
+    <Title>FSlugify: a minimalistic slug generator library</Title>
     <Version>1.1.0</Version>
     <Description>FSlugify is a slug generator library written entirely in F#.</Description>
-		<Authors>Enrico Galassi</Authors>
-		<PackageLicenseUrl>https://raw.githubusercontent.com/galassie/fslugify/master/LICENSE.md</PackageLicenseUrl>
-		<PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
-		<NoPackageAnalysis>True</NoPackageAnalysis>
-		<PackageTags>slug;slugify;F#;fsharp;</PackageTags>
+    <Authors>Enrico Galassi</Authors>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/galassie/fslugify/master/LICENSE.md</PackageLicenseUrl>
+    <PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
+    <NoPackageAnalysis>True</NoPackageAnalysis>
+    <PackageTags>slug;slugify;F#;fsharp;</PackageTags>
     <PackageIconUrl>https://raw.githubusercontent.com/galassie/fslugify/master/assets/fslugify-200x200.png</PackageIconUrl>
-		<RepositoryUrl>https://github.com/galassie/fslugify</RepositoryUrl>
-		<IncludeSymbols>True</IncludeSymbols>
+    <RepositoryUrl>https://github.com/galassie/fslugify</RepositoryUrl>
+    <IncludeSymbols>True</IncludeSymbols>
     <RepositoryType>git</RepositoryType>
-		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
 
   <ItemGroup>
