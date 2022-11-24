@@ -11,7 +11,7 @@ It's easy to use and has no extra dependencies.
 If you want to add this package to your project, execute the following command:
 
 ``` shell
-dotnet add package FSlugify --version 1.2.0
+dotnet add package FSlugify
 ```
 
 ## Build on your machine
