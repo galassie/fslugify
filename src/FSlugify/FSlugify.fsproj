@@ -9,7 +9,7 @@
   <PropertyGroup>
     <PackageId>FSlugify</PackageId>
     <Title>FSlugify: a minimalistic slug generator library</Title>
-    <Version>1.2.0</Version>
+    <Version>1.2.1</Version>
     <Description>FSlugify is a slug generator library written entirely in F#.</Description>
     <Authors>Enrico Galassi</Authors>
     <PackageLicenseUrl>https://raw.githubusercontent.com/galassie/fslugify/master/LICENSE.md</PackageLicenseUrl>
@@ -17,11 +17,18 @@
     <NoPackageAnalysis>True</NoPackageAnalysis>
     <PackageTags>slug;slugify;F#;fsharp;</PackageTags>
     <PackageIconUrl>https://raw.githubusercontent.com/galassie/fslugify/master/assets/fslugify-200x200.png</PackageIconUrl>
+    <PackageIcon>fslugify-200x200.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryUrl>https://github.com/galassie/fslugify</RepositoryUrl>
     <IncludeSymbols>True</IncludeSymbols>
     <RepositoryType>git</RepositoryType>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="../../assets/fslugify-200x200.png" Pack="true" PackagePath="/"/>
+    <None Include="../../README.md" Pack="true" PackagePath="/"/>
+  </ItemGroup>
 
   <ItemGroup>
     <Compile Include="CharSets.fs" />
